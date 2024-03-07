@@ -1,9 +1,9 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, Button, useTheme } from "@mui/material";
+import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataInvoices } from "../../data/mockData";
 import Header from "../../components/Header";
-
+import { mockDataInvoices } from "../../data/mockData";
 const Invoices = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -43,6 +43,7 @@ const Invoices = () => {
   ];
 
   return (
+    
     <Box m="20px">
       <Header title="INVOICES" subtitle="List of Invoice Balances" />
       <Box
@@ -74,6 +75,21 @@ const Invoices = () => {
           },
         }}
       >
+        <Box>
+          <Button
+            sx={{
+              backgroundColor: colors.blueAccent[700],
+              color: colors.grey[100],
+              fontSize: "14px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+              boxAlign: "left"
+            }}
+          >
+            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+            Download Reports
+          </Button>
+        </Box>
         <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
       </Box>
     </Box>
