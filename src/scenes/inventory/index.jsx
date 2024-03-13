@@ -1,62 +1,33 @@
+
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
-
-const Contacts = () => {
+ 
+const Inventory = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
-    },
+    { field: "id", headerName: "item_id", flex: 1, headerClassName: "header-class" },
+    { field: "itemId", headerName: "image", flex: 2, headerClassName: "header-class" },
+    { field: "orderItemId", headerName: "name", flex: 1, headerClassName: "header-class" },
+    { field: "totalPrice", headerName: "price", flex: 1, headerClassName: "header-class" },
+    { field: "roomId", headerName: "description", flex: 1, headerClassName: "header-class" },
+    { field: "expectedTime", headerName: "location", flex: 1, headerClassName: "header-class" },
+    { field: "dateTime", headerName: "dateTime", flex: 1, headerClassName: "header-class" },
+    { field: "stage", headerName: "item_status", flex: 1, headerClassName: "header-class" },
   ];
-
+ 
+ 
+ 
+ 
   return (
     <Box m="20px">
       <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
+        title="Available items"
+        subtitle="List of Available Items"
       />
       <Box
         m="40px 0 0 0"
@@ -72,32 +43,46 @@ const Contacts = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: "#630944",
             borderBottom: "none",
+            color: "#FFFFFF",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: "silver",
+            color: "#FFFFFF",
           },
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${colors.grey[100]} !important`,
-          },
+          }
+ 
+         
         }}
       >
-        <DataGrid
-          rows={mockDataContacts}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
+      <Box
+  m="40px 0 0 0"
+  height="97vh"
+  sx={{
+  }}
+>
+  <DataGrid
+    rows={mockDataContacts}
+    columns={columns}
+    components={{ Toolbar: GridToolbar }}
+    disableColumnMenu
+    disableColumnSelector
+  />
+</Box>
       </Box>
     </Box>
   );
 };
-
-export default Contacts;
+ 
+export default Inventory;
+ 
